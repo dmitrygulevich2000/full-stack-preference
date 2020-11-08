@@ -1,38 +1,57 @@
-.App {
-  text-align: center;
+html {
+  font-size: 7px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+body {
+  background-image: image("../public/sukno.jpg");
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
+#top_panel {
+  /* self properties */
+  width: max(500px, 99vw);
+  height: max(40px, 10vh);
+  font-size: max(40px, 10vh);
+  
+  border: medium solid black;
+  background-color: green;
+  border-radius: 10px;
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+  /* children properties */
   display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  justify-content: space-between;
 }
-
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
+  .top_panel__right {
+      width: 49%;
+      height: 84%;
+      font-size: 84%;
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-left: 1%;
+      
+      display: flex;
   }
-  to {
-    transform: rotate(360deg);
+      .top_panel__header {
+          font-size: 0.8em;
+          color: yellow;
+
+          display: flex;
+          align-items: center;
+      }
+  .top_panel__left {
+      width: 49%;
+      height: 84%;
+      font-size: 84%;
+      margin-top: auto;
+      margin-bottom: auto;
+      margin-right: 1%;
+
+      display: flex;
+      flex-direction: row-reverse;
+      align-items: center;
   }
-}
+      .top_panel__button {
+          font-size: 0.4em;
+          margin-left: 2%;
+      }
