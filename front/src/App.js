@@ -5,6 +5,7 @@ import './App.css';
 
 import Main from './components/Main'
 import TopPanel from './components/TopPanel';
+import Tables from './components/Tables';
 
 
 
@@ -21,7 +22,7 @@ function App() {
             </Route>
 
             <Route path='/tables' exact>
-              <div>Столы</div>
+              <Tables></Tables>
             </Route>
 
             <Route path="/">

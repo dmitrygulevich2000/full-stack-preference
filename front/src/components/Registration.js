@@ -1,5 +1,6 @@
 import React from "react";
 import { useDispatch } from "react-redux";
+import { useHistory } from "react-router-dom";
 import {logUser} from '../actions/userLogin'
 import {closeModal} from '../actions/modal'
 
@@ -8,7 +9,7 @@ const Registration = () => {
     const [mail, setMail] = React.useState("");
     const [password, setPassword] = React.useState("");
     const dispatch = useDispatch()
-    
+    const history = useHistory()
     const handleSubmit = (dispatch) => {
         if (!login || !password || !mail) {
             return;
@@ -20,6 +21,7 @@ const Registration = () => {
 
         dispatch(logUser(login))
         dispatch(closeModal())
+        history.push("/tables")
     }
 
 

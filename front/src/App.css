@@ -6,7 +6,9 @@ body {
 
 html, body {
   margin: 0;
-  height: 100%;
+  height: 100vh;
+  width: 100vw;
+  overflow: hidden
 }
 
 
@@ -153,4 +155,56 @@ html, body {
     background-color: #3e8e41;
     box-shadow: 0 5px #666;
     transform: translateY(4px);
+  }
+
+
+.tables_wrapper {
+  height: 100vh;
+  max-width: 100vw;
+}
+
+.tables_list {
+  /* background-color: #3e8e41; */
+  width: 40%;
+  height: 88vh;
+  margin: 1vh;
+  margin-left: 0;
+
+  overflow: scroll;
+  overflow-x: hidden;
+  direction: rtl;
+}
+
+.table_card {
+  direction:ltr;
+  display: flex;
+  flex-direction: column;
+  background: #CFFB72;
+  border: 3px solid #F1B927;
+  box-sizing: border-box;
+  border-radius: 20px;
+}
+
+  .table_card__head {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 0;
+  }
+  .table_card__head h3,p {
+    margin: 5px;
+  }
+
+  .table_card__content {
+    margin: 0;
+  }
+  .table_card__content ul {
+    margin: 0;
+  }
+
+  .table_card__btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 10px;
   }

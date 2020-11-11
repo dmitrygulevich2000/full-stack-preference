@@ -1,13 +1,14 @@
 import React from "react";
+import { useHistory } from "react-router-dom";
 import { useDispatch } from "react-redux";
-import {logUser} from '../actions/userLogin'
-import {closeModal} from '../actions/modal'
+import { logUser } from '../actions/userLogin'
+import { closeModal } from '../actions/modal'
 
-const SignIn = ({onSubmit}) => {
+const SignIn = () => {
     const [login, setLogin] = React.useState("");
     const [password, setPassword] = React.useState("");
     const dispatch = useDispatch()
-    
+    const history = useHistory()
     const handleSubmit = (dispatch) => {
         if (!login || !password) {
             return;
@@ -16,8 +17,10 @@ const SignIn = ({onSubmit}) => {
         /*
             ! Authorisation !
         */
+
         dispatch(logUser(login))
         dispatch(closeModal())
+        history.push("/tables")
     }
         
 

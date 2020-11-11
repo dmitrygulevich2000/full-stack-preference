@@ -1,18 +1,20 @@
 import {useSelector, useDispatch} from 'react-redux'
+import { MODAL_REGISTRATION, MODAL_SIGNIN, MODAL_CREATION } from '../constants/ModalNames';
 
-
-import TopPanel from './TopPanel'
 import Model from './Model'
 import Registration from './Registration'
 import SignIn from './SignIn'
 import Creation from './Creation'
-import { MODAL_REGISTRATION, MODAL_SIGNIN, MODAL_CREATION } from '../constants/ModalNames';
+import TableCard from './TableCard'
 
-function Tables() {
+
+const Tables = () => {
     const modalName = useSelector((state) => state.modal.modalName)
-
+    const tableList = useSelector((state) => state.tables.tableList)
+    const numTableExtraInfo = useSelector((state) => state.tables.numTableExtraInfo)
+    console.log(tableList)
     return (
-        <div>
+        <div className="tables_wrapper">
             <Model isModalOpen={modalName === MODAL_SIGNIN}>
                 <SignIn> </SignIn>
             </Model>
@@ -23,7 +25,11 @@ function Tables() {
                 <Creation> </Creation>
             </Model>
             <div className='tables_list'>
-
+            {
+                tableList.map((table) => (
+                    <TableCard tableInfo={table} isOpenExraInfo={numTableExtraInfo === table.id} key={table.id}/>)
+                )
+            }
             </div>
         </div>
     )
