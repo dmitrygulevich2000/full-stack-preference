@@ -25,8 +25,8 @@ const SignIn = ({onSubmit}) => {
         <div className="form-wrapper">
             <h2 className="form-header">Sign In</h2>
             <div className="form-item">
-                <label>Login</label>
-                <input 
+                <label className='form-item__label'>Login</label>
+                <input className='form-item__input'
                     placeholder="chipollino" 
                     type="text"
                     onChange={(event) => {
@@ -37,8 +37,8 @@ const SignIn = ({onSubmit}) => {
                 </input>
             </div>
             <div className="form-item">
-                <label>Password</label>
-                <input 
+                <label className='form-item__label'>Password</label>
+                <input className='form-item__input'
                     placeholder="very_cool_boy"
                     type="password"
                     onChange={(event) => {

@@ -5,7 +5,7 @@ import './App.css';
 
 import Main from './components/Main'
 import TopPanel from './components/TopPanel';
-
+import GameField from './components/GameField'
 
 
 function App() {
@@ -22,6 +22,10 @@ function App() {
 
             <Route path='/tables' exact>
               <div>Столы</div>
+            </Route>
+
+            <Route path="/field">
+              <GameField/>
             </Route>
 
             <Route path="/">

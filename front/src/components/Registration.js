@@ -28,8 +28,8 @@ const Registration = () => {
         <div className="form-wrapper">
             <h2 className="form-header">Join Us</h2>
             <div className="form-item">
-                <label>Your new login</label>
-                <input 
+                <label className='form-item__label'>Your new login</label>
+                <input className='form-item__input'
                     placeholder="chipollino"
                     type="text"
                     onChange={(event) => {
@@ -39,8 +39,8 @@ const Registration = () => {
                 </input>
             </div>
             <div className="form-item">
-                <label>e-mail</label>
-                <input 
+                <label className='form-item__label'>e-mail</label>
+                <input className='form-item__input'
                     placeholder="very_cool_boy@gmaol.com"
                     type="e-mail"
                     onChange={(event) => {
@@ -49,8 +49,8 @@ const Registration = () => {
                 </input>
             </div>
             <div className="form-item">
-                <label>Password</label>
-                <input
+                <label className='form-item__label'>Password</label>
+                <input className='form-item__input'
                     placeholder="very_cool_boy" 
                     type="password"
                     onChange={(event) => {
