@@ -1,0 +1,9 @@
+export const MODAL_OPEN = 'MODAL_OPEN'
+export const MODAL_CLOSE = 'MODAL_CLOSE'
+
+export const MODAL_SIGNIN = 'MODAL_SIGNIN'
+export const MODAL_REGISTRATION = 'MODAL_REGISTRATION'
+
+
+export const USER_LOGGED = 'USER_LOGGED'
+export const USER_LOGGEDOUT = 'USER_LOGGEDOUT'

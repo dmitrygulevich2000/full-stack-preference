@@ -1,18 +1,32 @@
+import {Provider} from 'react-redux'
+import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
+
+
 import './App.css';
+import initStore from './store'
+
+
+import Main from './components/Main'
+
+
 
 function App() {
+
   return (
-    <div id='top_panel'>
-        <div className='top_panel__right'>
-          <div className='top_panel__header'>Преферанс</div>
-        </div>
-        
-        <div className='top_panel__left'>
-          <button className='top_panel__button'>Регистрация</button>
-          <button className='top_panel__button'>Вход</button>
-        </div>
-        
-    </div>
+    <Provider store={initStore()}>
+    <Router>
+        <Switch>
+          <Route path="/" exact>
+            <Main />
+          </Route>
+          <Route path="/">
+            <div>Страница не найдена</div>
+          </Route>
+        </Switch>
+      </Router>
+    </Provider>
+
+
   );
 }
 

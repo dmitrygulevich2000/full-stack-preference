@@ -3,10 +3,17 @@ html {
 }
 
 body {
-  background-image: image("../public/sukno.jpg");
+  background-image: image("\public\sukno.jpg");
   background-size: cover;
   background-repeat: no-repeat;
 }
+
+html, body {
+  margin: 0;
+  height: 100%;
+}
+
+
 
 #top_panel {
   /* self properties */
@@ -55,3 +62,99 @@ body {
           font-size: 0.4em;
           margin-left: 2%;
       }
+
+
+.model {
+  position: fixed;
+  display: flex;
+  justify-content: space-around;
+  align-items: space-around;
+  width: 70%;
+  height: 50%;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  
+  background-color: #FFF850;
+  border: 3px solid rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  border-radius: 30px;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  height: 100%;
+  width: 100%;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  height: 100%;
+  width: 100%;
+}
+
+  .form-header {
+    font-family: Red Hat Text;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 32px;
+    display: flex;
+    margin: 0%;
+  }
+
+  .form-item {
+    display: flex;
+    flex-direction: column;  
+    align-items: center;
+    
+  }
+
+    .form-item label {
+      font-family: Red Hat Text;
+      font-style: italic;
+      font-weight: normal;
+      font-size: 22px;
+      line-height: 29px;
+      display: flex;
+      padding: 2%;
+    }
+
+    .form-item input {
+      background: #FFFFFF;
+      border: 2px solid #000000;
+      box-sizing: border-box;
+      box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+      border-radius: 32px;
+      outline:none;
+      
+      
+      text-align:center;
+      min-width: 20em;
+      min-height: 3em;
+    }
+
+  .form-btn {
+    background: #C4C4C4;
+    border: 2px solid #000000;
+    box-sizing: border-box;
+    border-radius: 32px;
+    outline:none;
+    cursor: pointer;
+
+    min-width: 10em;
+    min-height: 3em;
+    margin-bottom: 1.5em;
+  }
+  .form-btn:hover {
+    background-color: green
+  }
+  .form-btn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  }
