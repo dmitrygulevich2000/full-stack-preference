@@ -7,6 +7,7 @@ import Main from './components/Main'
 import TopPanel from './components/TopPanel';
 import Tables from './components/Tables';
 
+import GameField from './components/GameField'
 
 
 function App() {
@@ -23,6 +24,10 @@ function App() {
 
             <Route path='/tables' exact>
               <Tables></Tables>
+            </Route>
+
+            <Route path="/field">
+              <GameField/>
             </Route>
 
             <Route path="/">

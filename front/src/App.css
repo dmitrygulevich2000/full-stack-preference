@@ -109,10 +109,9 @@ html, body {
     display: flex;
     flex-direction: column;  
     align-items: center;
-    
   }
 
-    .form-item label {
+    .form-item__label {
       font-family: Red Hat Text;
       font-style: italic;
       font-weight: normal;
@@ -122,7 +121,7 @@ html, body {
       padding: 2%;
     }
 
-    .form-item input {
+    .form-item__input {
       background: #FFFFFF;
       border: 2px solid #000000;
       box-sizing: border-box;

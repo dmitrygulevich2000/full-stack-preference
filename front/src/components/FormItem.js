@@ -1,38 +1,57 @@
 import React from "react";
-import TopPanel from "./TopPanel";
 
-// FormItem_props = {
-//     label: 'labelname',
-//     type: 'text' / 'checkbox' / 'radio' / 'list',
-//     items: ['item_1', ..., 'item_n'], <- when type == 'text' used as placeholder
-//     checked: [bool, ..., bool] <- if type == 'checkbox' or 'radio'
-// }
+import './FormItem.css'
 
-function FormItem(props) {
-    let answers = {}
-    switch (props.type) {
-        case 'text':
-            answers = (<div>
-                            <label>{props.label}</label>
-                            <input type='text' placeholder={props.items[0]}></input>
-                        </div>)
-            break
-        default:
-            answers = (<div>NO CHOICE</div>)
-    }
-    
-    return (
-        <div className='form_item'>
-            <p>{props.label}</p>
-            <div className='form_item__answers_wrapper'>
-                {{'text':   <div></div>,
-                  'list': <div></div>,
-                  'checkbox': <div></div>,
-                  'radio': <div></div>
-                }[props.type]}
-            </div>
-        </div>
-    )
+/*FormItem_props = {
+    name: 'name_for_internal_usage',
+    header: 'headername',
+    type: 'text' / 'checkbox' / 'radio' / 'list',
+    variants: [
+        {
+          value: 'val_for_internal_usage', <- when type == 'text' used as placeholder
+          label: 'h', <- ignored when type == 'text'
+          checked: bool <- used if type == 'checkbox' or 'radio' (THIS LINE NOT SUPPORTED)
+        },
+        ...
+    ]
+}*/
+
+const FormItem = ({props}) => {
+  let item = {}
+  console.log(props)
+  switch (props.type) {
+    case 'text':
+        item = (<div className='form-item'>
+                        <label className='form-item__header'>{props.header}</label>
+                        <input className='form-item__text'
+                                type='text' 
+                                name={props.name} 
+                                placeholder={props.variants[0].value}/>
+                    </div>)
+        break
+    case 'checkbox':
+        item = (<div className='form-item'>
+                  <div className='form-item__header'>{props.header}</div>
+                  <div className='form-item__vars-list'>
+                    {props.variants.map((variant, idx) => {
+                      return (
+                      <label className='form-item__vars-list__item'>
+                            <input className='form-item__vars-list__checkbox' 
+                                type='checkbox' 
+                                name={props.name}
+                                value={variant.value}/>
+                            {variant.label}   
+                      </label>
+                      )
+                    })}
+                  </div>
+              </div>)
+        break
+    default:
+        item = (<div>NO CHOICE</div>)
+  }
+  
+  return ( item )
 }
 
 export default FormItem

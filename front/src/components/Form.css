@@ -1,0 +1,37 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+  }
+    .form__header {
+        font-family: Red Hat Text;
+        font-style: normal;
+        font-weight: bold;
+        font-size: 30px;
+        line-height: 32px;
+        display: flex;
+        margin: 0%;
+    }
+    .form__submit {
+        background: #C4C4C4;
+        border: 2px solid #000000;
+        box-sizing: border-box;
+        border-radius: 32px;
+        outline:none;
+        cursor: pointer;
+    
+        min-width: 10em;
+        min-height: 3em;
+        margin-bottom: 1.5em;
+      }
+      .form__submit:hover {
+        background-color: green
+      }
+      .form__submit:active {
+        background-color: #3e8e41;
+        box-shadow: 0 5px #666;
+        transform: translateY(4px);
+      }
