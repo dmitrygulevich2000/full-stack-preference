@@ -46,7 +46,10 @@
     overflow: scroll;
     overflow-x: hidden;
   }
-
+  .row-wrapper {
+    display: flex;
+    justify-content: space-around;
+  }
     .form-item {
       display: flex;
       flex-direction: column;  

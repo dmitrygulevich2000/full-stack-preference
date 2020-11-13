@@ -6,15 +6,17 @@ import {openModal} from '../actions/modal'
 import Model from './Model'
 import Registration from './Registration'
 import SignIn from './SignIn'
-import ApplyingResults from './ApplyingResults'
+import ResultsForm from './ResultsForm'
 
 import '../styles/GameField.css'
 
 const GameField = (props)=> {
     const {id} = props
     const modalName = useSelector((state) => state.modal.modalName)
-    const table = useSelector( (state)=>state.tables.tableList.filter( (t)=>(t.id === id )[0]) )
     const dispatch = useDispatch()
+
+    const res = useSelector((state) => state.resultsForm)
+    console.log(res)
 
     return (
         <div>
@@ -25,7 +27,7 @@ const GameField = (props)=> {
                 <Registration> </Registration>
             </Model>
             <Model isModalOpen={modalName === MODAL_APPLY}>
-                <ApplyingResults> </ApplyingResults>
+                <ResultsForm> </ResultsForm>
             </Model>
 
             <button onClick={() => dispatch(openModal(MODAL_APPLY))}> Задать результат </button>
