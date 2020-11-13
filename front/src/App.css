@@ -28,7 +28,6 @@ html, body {
   justify-content: space-between;
 }
   .top_panel__right {
-      width: 49%;
       height: 84%;
       font-size: 84%;
       margin-top: auto;
@@ -45,7 +44,6 @@ html, body {
           align-items: center;
       }
   .top_panel__left {
-      width: 49%;
       height: 84%;
       font-size: 84%;
       margin-top: auto;

@@ -1,7 +1,5 @@
 import React from "react";
 
-import './FormItem.css'
-
 /*FormItem_props = {
     name: 'name_for_internal_usage',
     header: 'headername',

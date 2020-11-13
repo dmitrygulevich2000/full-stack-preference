@@ -1,6 +1,6 @@
 import React from "react";
 
-import './Form.css'
+import '../styles/Form.css'
 import FormItem from './FormItem';
 
 /*Form_props = {
