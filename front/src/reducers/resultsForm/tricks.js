@@ -1,6 +1,6 @@
 import { RESULTS_TRICKS_SET } from '../../constants/ModalNames'
 
-const initialState = [0, 0, 0, 0]
+const initialState = ['blank', 'blank', 'blank', 'blank']
 
 export default function tricks(state=initialState, action) {
     switch (action.type) {

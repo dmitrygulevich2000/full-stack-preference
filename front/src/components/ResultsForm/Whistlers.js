@@ -43,7 +43,7 @@ const Whistlers = ()=> {
       )
     } else {
         if (count > 0) { dispatch(resetValue('whistlers'))}
-        return <></>
+        return null;
     }
 }
 
