@@ -34,7 +34,6 @@ export function setResultsOnIdx(name, idx, value) {
                 value: value
             }
             case 'tricks':
-                console.log(value)
                 return {
                     type: RESULTS_TRICKS_SET,
                     idx: idx,

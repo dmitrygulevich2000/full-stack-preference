@@ -14,15 +14,13 @@ import '../styles/GameField.css'
 
 
 const GameField = (props)=> {
-  const {id} = props
   const modalName = useSelector((state) => state.modal.modalName)
   const dispatch = useDispatch()
 
   const res = useSelector((state) => state.resultsForm) ////
-  console.log(res) ////
-
+  console.log('res:', res) ////
   return (
-    <div>
+    <>
       <Model isModalOpen={modalName === MODAL_SIGNIN}>
           <SignIn> </SignIn>
       </Model>
@@ -36,7 +34,7 @@ const GameField = (props)=> {
       <Score/>
       
       <button onClick={() => dispatch(openModal(MODAL_APPLY))}> Задать результат </button>
-    </div>
+    </>
   )
 }
 

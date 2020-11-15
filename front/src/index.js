@@ -4,13 +4,13 @@ import {Provider} from 'react-redux'
 
 import './index.css';
 import App from './App';
-import initStore from './store'
+import {store} from './store'
 
 import reportWebVitals from './reportWebVitals';
 
 ReactDOM.render(
   <React.StrictMode>
-    <Provider store={initStore()}>
+    <Provider store={store}>
     <App />
     </Provider>
   </React.StrictMode>,
