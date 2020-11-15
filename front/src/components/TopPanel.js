@@ -16,7 +16,7 @@ const TopPanel = () => {
           <button className='top_panel__button' onClick={() => dispatch(openModal(MODAL_REGISTRATION))}>Регистрация</button>
           <button className='top_panel__button' onClick={() => dispatch(openModal(MODAL_SIGNIN))}>Вход</button>
         </div> 
-        : <div className='top_panel__left'> 
+        : <div className='top_panel__left'>
           <p>{userLogin}</p> 
           </div>
 

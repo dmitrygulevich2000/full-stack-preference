@@ -1,7 +1,8 @@
 import React from "react";
-import { useSelector, useDispatch} from "react-redux";
+import {useDispatch} from "react-redux";
 
 import {scoreAdd, scoreAddOnIdx, scoreAddOnIdxs} from '../actions/score'
+import {closeModal} from '../actions/modal'
 import DealTypes from './ResultsForm/DealTypes';
 import Whistlers from './ResultsForm/Whistlers';
 import ContractInfo from './ResultsForm/ContractInfo';
@@ -13,16 +14,28 @@ import '../styles/Form.css'
 // whistler == вистующий
 // trick == взятка
 
-function handleSubmit(event) {
-  const resultsForm = store.getState().resultsForm
-  console.log('results: ', resultsForm) ////
+function handleSubmit(event, dispatch) {
+  const results = store.getState().resultsForm
+  console.log('results: ', results) ////
+
+  const tricks = results.tricks.map((el)=>parseInt(el))
+  
+  //!-- verification --!//
+  if (tricks.reduce((acc, cv)=>acc + cv) !== 10) {
+    alert('Общее число взяток не равно 10')
+    return
+  }
+  // other checking...
 
   
+  
+  dispatch(closeModal())
 }
 
-const ResultsForm = ({props})=> {
+const ResultsForm = ()=> {
+  const dispatch = useDispatch()
   return (
-      <form className='form' name='results'>
+      <div className='form' name='results'>
         <div className='form__header'> Результаты раздачи: </div>
         
         <div className='form__items-list'>
@@ -31,8 +44,8 @@ const ResultsForm = ({props})=> {
           <Whistlers/>
           <Tricks/>
         </div>
-        <input className='form__submit' type='submit' value='Готово!' onClick={handleSubmit}/>
-      </form>
+        <input className='form__submit' type='submit' value='Готово!' onClick={(event)=>handleSubmit(event, dispatch)}/>
+      </div>
     )
 }
 

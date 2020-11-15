@@ -1,20 +1,9 @@
-.score-svg {
-    stroke-width: 5;
+.score-svg__text__line {
+    stroke-width: 0;
     stroke-linecap: butt;
     stroke-linejoin: bevel;
     stroke: black;
-    font-size: 14px;
-    fill: none
+    fill: black;
+    font-size: 56px;
+    
 }
-    .score-svg__text {
-        font-size: 14px;
-    }
-        .score-svg__text__line {
-            stroke-width: 0;
-            stroke-linecap: butt;
-            stroke-linejoin: bevel;
-            stroke: black;
-            fill: black;
-            
-            font-size: 4em;
-        }

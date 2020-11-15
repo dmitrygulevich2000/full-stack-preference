@@ -1,6 +1,8 @@
 import React from "react";
 import {useSelector, useDispatch} from 'react-redux'
 
+import viewBox from '../dataStructures/viewBox'
+
 import '../styles/GameField.css'
 
 function useWindowSize() {
@@ -17,42 +19,6 @@ function useWindowSize() {
     return size;
 }
 
-class viewBox {
-    static toString(pointsList) {
-        // points - array of pairs
-        return pointsList.map((pair)=>(pair[0] + ',' + pair[1])).join(' ') 
-    }
-
-    constructor(xlim, ylim) {
-        this.xlim = xlim
-        this.ylim = ylim
-        this.proportion = xlim / ylim
-    }
-
-    center() {
-        return [this.xlim / 2, this.ylim / 2]
-    }
-    mainDiagByX(x) {  // точка на главной диагонали с x-координатой х
-        return [x, x / this.proportion]
-    }
-    flipVertical(p) {
-        const x = p[0]
-        const y = p[1]
-        return [x, this.ylim - y] 
-    }
-    flipGorizontal(p) {
-        const x = p[0]
-        const y = p[1]
-        return [this.xlim - x, y]
-    }
-    flipCentral(p) {
-        const x = p[0]
-        const y = p[1]
-        return [this.xlim - x, this.ylim - y] 
-    }
-
-}
-
 const Score = ()=> {
     const window = useWindowSize();   
     const scoreFieldWidth = (window.height < window.width) ? 0.5*window.width : 0.8*window.width;
@@ -64,6 +30,12 @@ const Score = ()=> {
 
     if (scoreFieldWidth) {
         const vb = (window.height < window.width) ? new viewBox(1350, 1080) : new viewBox(1080, 1350)
+        vb.setStyle({strokeWidth: '5',
+            strokeLinecap: 'butt',
+            strokeLinejoin: 'bevel',
+            stroke: 'black',
+            fontSize: '56px',
+            fill: 'none'})
         
         // начальные точки для некоторых элементов рисунка
         const p1 = vb.mainDiagByX(vb.xlim*0.28)
@@ -73,25 +45,25 @@ const Score = ()=> {
         return (
             <svg className='score-svg' width={scoreFieldWidth + 'px'} height={scoreFieldHeight + 'px'}
                 viewBox={'0 0 ' + vb.xlim + ' ' + vb.ylim}>
-                <polygon points={viewBox.toString([[0, 0], [vb.xlim, 0], [vb.xlim, vb.ylim], [0, vb.ylim]])} strokeWidth='10' ></polygon>
+                {vb.polygon([[0, 0], [vb.xlim, 0], [vb.xlim, vb.ylim], [0, vb.ylim]], {strokeWidth: '10'})}           
+                {vb.line( [0, 0], [vb.xlim, vb.ylim] )}
+                {vb.line( [0, vb.ylim], [vb.xlim, 0] )}
+                {vb.circle(vb.center(), 0.24*Math.min(...vb.center()))}
                 
-                <line x1='0' y1='0' x2={vb.xlim} y2={vb.ylim}></line>
-                <line x1='0' y1={vb.ylim} x2={vb.xlim} y2='0'></line>
-                <circle cx={vb.center()[0]} cy={vb.center()[1]} r={0.24*Math.min(...vb.center())}></circle>
-                <polygon points={viewBox.toString([p1, vb.flipGorizontal(p1), vb.flipCentral(p1), vb.flipVertical(p1)])}></polygon>
-                <polygon points={viewBox.toString([p2, vb.flipGorizontal(p2), vb.flipCentral(p2), vb.flipVertical(p2)])}></polygon>
+                {vb.polygon([p1, vb.flipGorizontal(p1), vb.flipCentral(p1), vb.flipVertical(p1)])}
+                {vb.polygon([p2, vb.flipGorizontal(p2), vb.flipCentral(p2), vb.flipVertical(p2)])}
                 
-                <line x1={ps1[0][0]} y1={ps1[0][1]} x2='0' y2={ps1[0][1]}></line>
-                <line x1={ps1[1][0]} y1={ps1[1][1]} x2='0' y2={ps1[1][1]}></line>
+                {vb.line( ps1[0], [0, ps1[0][1]] )}
+                {vb.line( ps1[1], [0, ps1[1][1]] )}
                 
-                <line x1={vb.flipGorizontal(ps1[0])[0]} y1={ps1[0][1]} x2={vb.xlim} y2={ps1[0][1]}></line>
-                <line x1={vb.flipGorizontal(ps1[1])[0]} y1={ps1[1][1]} x2={vb.xlim} y2={ps1[1][1]}></line>
+                {vb.line( vb.flipGorizontal(ps1[0]), [vb.xlim, ps1[0][1]])}
+                {vb.line( vb.flipGorizontal(ps1[1]), [vb.xlim, ps1[1][1]])}
 
-                <line x1={ps2[0][0]} y1={ps2[0][1]} x2={ps2[0][0]} y2='0'></line>
-                <line x1={ps2[1][0]} y1={ps2[1][1]} x2={ps2[1][0]} y2='0'></line>
+                {vb.line( ps2[0], [ps2[0][0], 0] )}
+                {vb.line( ps2[1], [ps2[1][0], 0] )}
 
-                <line x1={ps2[0][0]} y1={vb.flipVertical(ps2[0])[1]} x2={ps2[0][0]} y2={vb.ylim}></line>
-                <line x1={ps2[1][0]} y1={vb.flipVertical(ps2[1])[1]} x2={ps2[1][0]} y2={vb.ylim}></line>
+                {vb.line( vb.flipVertical(ps2[0]), [ps2[0][0], vb.ylim] )}
+                {vb.line( vb.flipVertical(ps2[1]), [ps2[1][0], vb.ylim] )}
 
                 {/* подгоняем координаты текстовых полей */}
                 {/* слишком много параметров чтобы рендерить списком*/}
