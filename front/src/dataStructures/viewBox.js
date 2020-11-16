@@ -10,9 +10,13 @@ export default class viewBox {
         this.proportion = xlim / ylim
 
         this.style = {}
+        this.textStyle = {}
     }
     setStyle(style) {
         this.style = style
+    }
+    setTextStyle(style) {
+        this.textStyle = style
     }
 
     center() {

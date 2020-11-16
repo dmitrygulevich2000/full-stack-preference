@@ -2,7 +2,9 @@ import React from "react";
 import {useDispatch} from "react-redux";
 
 import {scoreAdd, scoreAddOnIdx, scoreAddOnIdxs} from '../actions/score'
+import {historyPush} from '../actions/scoreHistory'
 import {closeModal} from '../actions/modal'
+
 import DealTypes from './ResultsForm/DealTypes';
 import Whistlers from './ResultsForm/Whistlers';
 import ContractInfo from './ResultsForm/ContractInfo';

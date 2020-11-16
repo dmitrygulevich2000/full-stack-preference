@@ -1,9 +1,7 @@
 .score-svg__text__line {
     stroke-width: 0;
-    stroke-linecap: butt;
-    stroke-linejoin: bevel;
-    stroke: black;
     fill: black;
+    color: black;
     font-size: 56px;
     
 }
