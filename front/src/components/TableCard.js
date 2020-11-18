@@ -13,8 +13,8 @@ const TableCard = (props) => {
             </div>
             <div className="table_card__content">
                 <ul>
-                    {props.tableInfo.players.map( (player) =>
-                        <li>{player}</li>
+                    {props.tableInfo.players.map( (player, i) =>
+                        <li key={i}>{player}</li>
                     )}
                 </ul>
             </div>

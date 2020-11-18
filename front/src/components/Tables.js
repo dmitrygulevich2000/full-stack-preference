@@ -9,20 +9,18 @@ import TableCard from './TableCard'
 
 
 const Tables = () => {
-    const modalName = useSelector((state) => state.modal.modalName)
     const tableList = useSelector((state) => state.tables.tableList)
     const numTableExtraInfo = useSelector((state) => state.tables.numTableExtraInfo)
-    console.log(tableList)
     return (
         <div className="tables_wrapper">
-            <Model isModalOpen={modalName === MODAL_SIGNIN}>
-                <SignIn> </SignIn>
+            <Model ModalType={MODAL_SIGNIN}>
+                <SignIn/>
             </Model>
-            <Model isModalOpen={modalName === MODAL_REGISTRATION}>
-                <Registration> </Registration>
+            <Model ModalType={MODAL_REGISTRATION}>
+                <Registration/>
             </Model>
-            <Model isModalOpen={modalName === MODAL_CREATION}>
-                <Creation> </Creation>
+            <Model ModalType={MODAL_CREATION}>
+                <Creation/>
             </Model>
             <div className='tables_list'>
             {

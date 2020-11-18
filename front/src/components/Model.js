@@ -1,8 +1,10 @@
+import {useSelector} from 'react-redux'
 
 
-const Model = ({children, isModalOpen}) => {
-    
-    if (!isModalOpen) {
+const Model = ({children, ModalType}) => {
+    const modalName = useSelector((state) => state.modal.modalName)
+    console.log(ModalType)
+    if (ModalType !== modalName) {
         return null
     }
 

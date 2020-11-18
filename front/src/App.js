@@ -23,7 +23,7 @@ function App() {
             </Route>
 
             <Route path='/tables' exact>
-              <Tables></Tables>
+              <Tables/>
             </Route>
 
             <Route path="/field">

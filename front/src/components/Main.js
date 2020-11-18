@@ -1,27 +1,22 @@
-import {useSelector, useDispatch} from 'react-redux'
-
-
-
 import Model from './Model'
 import Registration from './Registration'
 import SignIn from './SignIn'
 import { MODAL_REGISTRATION, MODAL_SIGNIN } from '../constants/ModalNames';
+import { Fragment } from 'react';
 
 
 
 const Main = () => {
 
-    const modalName = useSelector((state) => state.modal.modalName)
-    // dispatch = useDispatch()
     return (
-        <div>
-            <Model isModalOpen={modalName === MODAL_SIGNIN}>
-                <SignIn> </SignIn>
+        <Fragment>
+            <Model ModalType={MODAL_SIGNIN}>
+                <SignIn/>
             </Model>
-            <Model isModalOpen={modalName === MODAL_REGISTRATION}>
-                <Registration> </Registration>
+            <Model ModalType={MODAL_REGISTRATION}>
+                <Registration/>
             </Model>
-        </div>
+        </Fragment>
     )
 }
 

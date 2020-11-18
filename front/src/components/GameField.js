@@ -14,21 +14,23 @@ import '../styles/GameField.css'
 
 
 const GameField = (props)=> {
-  const modalName = useSelector((state) => state.modal.modalName)
+  // const modalName = useSelector((state) => state.modal.modalName)
   const dispatch = useDispatch()
 
-  const res = useSelector((state) => state.resultsForm) ////
-  console.log('res:', res) ////
+  // const res = useSelector((state) => state.resultsForm) ////
+  // console.log('res:', res) ////
+  console.log('res:') ////
+  
   return (
     <>
-      <Model isModalOpen={modalName === MODAL_SIGNIN}>
-          <SignIn> </SignIn>
+      <Model ModalType={MODAL_SIGNIN}>
+          <SignIn/>
       </Model>
-      <Model isModalOpen={modalName === MODAL_REGISTRATION}>
-          <Registration> </Registration>
+      <Model ModalType={MODAL_REGISTRATION}>
+          <Registration/>
       </Model>
-      <Model isModalOpen={modalName === MODAL_APPLY}>
-          <ResultsForm> </ResultsForm>
+      <Model ModalType={MODAL_APPLY}>
+          <ResultsForm/>
       </Model>
       
       <Score/>
