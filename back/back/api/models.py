@@ -1,14 +1,10 @@
 from django.db import models
+from django.contrib.auth.models import AbstractUser
 
-class Users(models.Model):
-    login = models.CharField(max_length=50)
-    email = models.EmailField()
-    password = models.CharField(max_length=300)
+class User(AbstractUser):
+    pass
 
-    def __str__(self):
-        return self.login
-
-class Tables(models.Model):
+class Table(models.Model):
     GAME_TYPES = [
         ('pref', 'Preference')
     ]
@@ -19,6 +15,6 @@ class Tables(models.Model):
     def __str__(self):
         return self.name
 
-class Players(models.Model):
-    table = models.ForeignKey(Tables, on_delete=models.CASCADE) # if table deleted player on it deleted to
-    user = models.ForeignKey(Users, on_delete=models.SET_NULL, blank=True, null=True) # if user deleted player becomes unauthorized
+class Player(models.Model):
+    table = models.ForeignKey(Table, on_delete=models.CASCADE) # if table deleted player on it deleted to
+    user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True) # if user deleted player becomes unauthorized

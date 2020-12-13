@@ -1,17 +1,17 @@
 from django.shortcuts import render
 from rest_framework import viewsets, mixins
 
-from api.models import Users, Tables, Players
+from api.models import User, Table, Player
 from api.serializers import UserSerializer, TableSerializer, PlayerSerializer
 
-class UsersViewSet(viewsets.ModelViewSet):
-    queryset = Users.objects.all()
+class UserViewSet(viewsets.ModelViewSet):
+    queryset = User.objects.all()
     serializer_class = UserSerializer
 
-class TablesViewSet(viewsets.ModelViewSet):
-    queryset = Tables.objects.all()
+class TableViewSet(viewsets.ModelViewSet):
+    queryset = Table.objects.all()
     serializer_class = TableSerializer
 
-class PlayersViewSet(viewsets.ModelViewSet):
-    queryset = Players.objects.all()
+class PlayerViewSet(viewsets.ModelViewSet):
+    queryset = Player.objects.all()
     serializer_class = PlayerSerializer
