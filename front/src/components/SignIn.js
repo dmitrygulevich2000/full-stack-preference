@@ -9,18 +9,19 @@ const SignIn = () => {
     const [password, setPassword] = React.useState("");
     const dispatch = useDispatch()
     const history = useHistory()
-    const handleSubmit = (dispatch) => {
-        if (!login || !password) {
-            return;
-        }
+    const handleSubmit = async () => {
+        // event.preventDefault
+        // if (!login || !password) {
+        //     return;
+        // }
 
         /*
             ! Authorisation !
         */
 
-        dispatch(logUser(login))
+        await dispatch(logUser(login, password))
         dispatch(closeModal())
-        history.push("/tables")
+        // history.push("/tables")
     }
         
 
@@ -52,7 +53,7 @@ const SignIn = () => {
 
             <button 
                 className="form-btn"
-                onClick={() => handleSubmit(dispatch)}>
+                onClick={() => handleSubmit()}>
                     Check it out
             </button>
         </div>
