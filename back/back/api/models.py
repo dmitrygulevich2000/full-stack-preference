@@ -8,7 +8,6 @@ class Users(models.Model):
     def __str__(self):
         return self.login
 
-
 class Tables(models.Model):
     GAME_TYPES = [
         ('pref', 'Preference')

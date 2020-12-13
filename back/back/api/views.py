@@ -15,4 +15,3 @@ class TablesViewSet(viewsets.ModelViewSet):
 class PlayersViewSet(viewsets.ModelViewSet):
     queryset = Players.objects.all()
     serializer_class = PlayerSerializer
-
