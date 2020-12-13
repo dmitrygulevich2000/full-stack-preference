@@ -21,6 +21,7 @@ from api import views
 router = routers.DefaultRouter()
 router.register(r'users', views.UsersViewSet)
 router.register(r'tables', views.TablesViewSet)
+router.register(r'players', views.PlayersViewSet)
 
 urlpatterns = [
     path('', include(router.urls))
