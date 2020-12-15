@@ -11,19 +11,18 @@ export function updateTables() {
             )()
             const tables = await response.json()
             const return_state = tables.map(
-                (table) => {
+                (table, idx) => {
+                    console.log(table)
                     return {
-                        id: 0,
+                        id: idx,
                         tableName: table["name"],
-                        gameName: 'Преферанс',
-                        status: 'Closed',
-                        players: [
-                            'Митя',
-                            'Паша',
-                            'Иван'
-                        ],
+                        gameName: table.game,
+                        status: 'Closed', // пока нет в api
+                        players: table.player_set.map((pl)=>{
+                            return pl.user ? pl.user.username : "anonymous-player-"+ pl.id
+                        }),
                         extra: {
-                            convention: 'Сочи'
+                            convention: table.description
                         }
                     }
                 }

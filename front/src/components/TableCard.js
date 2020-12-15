@@ -27,7 +27,7 @@ const TableCard = (props) => {
             </div>
             {
                 props.isOpenExraInfo 
-                ? <div><p>Some Very Useful Extra Information !</p></div> 
+                ? <div><p>{props.tableInfo.extra.convention}</p></div>
                 : <></> // Заглушка 
             }
         </div>
