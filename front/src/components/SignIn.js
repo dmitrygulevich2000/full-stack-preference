@@ -18,7 +18,6 @@ const SignIn = () => {
         /*
             ! Authorisation !
         */
-
         await dispatch(logUser(login, password))
         dispatch(closeModal())
         // history.push("/tables")

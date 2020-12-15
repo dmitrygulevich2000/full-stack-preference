@@ -7,10 +7,15 @@ import SignIn from './SignIn'
 import Creation from './Creation'
 import TableCard from './TableCard'
 
+import {updateTables} from '../actions/tables'
+
 
 const Tables = () => {
+    const dispatch = useDispatch()
+
     const tableList = useSelector((state) => state.tables.tableList)
     const numTableExtraInfo = useSelector((state) => state.tables.numTableExtraInfo)
+
     return (
         <div className="tables_wrapper">
             <Model ModalType={MODAL_SIGNIN}>
@@ -22,6 +27,8 @@ const Tables = () => {
             <Model ModalType={MODAL_CREATION}>
                 <Creation/>
             </Model>
+            {/* TODO: button */}
+            <button className='top_panel__button' onClick={() => {dispatch(updateTables())}}>refresh</button>
             <div className='tables_list'>
             {
                 tableList.map((table) => (

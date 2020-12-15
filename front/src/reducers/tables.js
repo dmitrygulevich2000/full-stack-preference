@@ -57,11 +57,12 @@ const initialState = {
 
 
 export default function tables(state = initialState, action) {
+    console.log("dadd")
     switch(action.type) {
       case UPDATE_TABLES:
         return {
             tableList: action.tableList,
-          numTableExtraInfo: null
+            numTableExtraInfo: null
         }
       case UPDATE_TABLE_EXRAINFO:
         return {

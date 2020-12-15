@@ -28,7 +28,7 @@ const TableCard = (props) => {
             {
                 props.isOpenExraInfo 
                 ? <div><p>Some Very Useful Extra Information !</p></div> 
-                : <div></div> // Заглушка 
+                : <></> // Заглушка 
             }
         </div>
     )
