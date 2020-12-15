@@ -1,6 +1,8 @@
 from rest_framework import serializers
 
-from api.models import User, Table, Player
+from .models import User, Table, Player, PreferenceScore
+from .PreferenceScoreSerializer import PreferenceScoreSerializer
+from .fields import ScoreObjectRelatedField
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -14,6 +16,9 @@ class TableSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 class PlayerSerializer(serializers.ModelSerializer):
+    #score_object = ScoreObjectRelatedField()
+    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+
     class Meta:
         model = Player
         fields = '__all__'

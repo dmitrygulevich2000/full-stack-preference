@@ -22,6 +22,7 @@ router = routers.DefaultRouter()
 router.register(r'users', views.UserViewSet)
 router.register(r'tables', views.TableViewSet)
 router.register(r'players', views.PlayerViewSet)
+router.register(r'scores', views.PreferenceScoreViewSet)
 
 urlpatterns = [
     path('', include(router.urls))
