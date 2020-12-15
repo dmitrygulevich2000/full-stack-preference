@@ -1,22 +1,22 @@
 from django.shortcuts import render
 from rest_framework import viewsets, mixins
+import rest_framework.permissions as perm
 
-from api.models import User, Table, Player, PreferenceScore
-from api.serializers import UserSerializer, TableSerializer, PlayerSerializer, PreferenceScoreSerializer
+from api.models import User
+from api.serializers import UserSerializer, UserPlayerSerializer, UserPlayerTableSerializer
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
-    serializer_class = UserSerializer
+    serializer_class = UserPlayerTableSerializer
 
-class TableViewSet(viewsets.ModelViewSet):
-    queryset = Table.objects.all()
-    serializer_class = TableSerializer
+    def get_permissions(self):
+        if self.action == 'list':
+            return [perm.IsAdminUser()]
+        elif self.action == 'create':
+            return [perm.AllowAny()]
+        else:
+            return [perm.IsAuthenticated()]
 
-class PlayerViewSet(viewsets.ModelViewSet):
-    queryset = Player.objects.all()
-    serializer_class = PlayerSerializer
-
-class PreferenceScoreViewSet(viewsets.ModelViewSet):
-    queryset = PreferenceScore.objects.all()
-    serializer_class = PreferenceScoreSerializer
-
+# class PreferenceScoreViewSet(viewsets.ModelViewSet):
+#     queryset = PreferenceScore.objects.all()
+#     serializer_class = PreferenceScoreSerializer

@@ -16,13 +16,15 @@ Including another URLconf
 from django.urls import path, include
 from rest_framework import routers
 
-from api import views
+from api.views import UserViewSet
+from api.table.views import TableViewSet
+from api.player.views import PlayerViewSet
 
 router = routers.DefaultRouter()
-router.register(r'users', views.UserViewSet)
-router.register(r'tables', views.TableViewSet)
-router.register(r'players', views.PlayerViewSet)
-router.register(r'scores', views.PreferenceScoreViewSet)
+router.register(r'users', UserViewSet)
+router.register(r'tables', TableViewSet)
+router.register(r'players', PlayerViewSet)
+#router.register(r'scores', views.PreferenceScoreViewSet)
 
 urlpatterns = [
     path('', include(router.urls))

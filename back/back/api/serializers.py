@@ -1,8 +1,13 @@
 from rest_framework import serializers
 
-from .models import User, Table, Player, PreferenceScore
-from .PreferenceScoreSerializer import PreferenceScoreSerializer
-from .fields import ScoreObjectRelatedField
+from .models import User
+from api.table.models import Table
+from api.player.models import Player
+
+from api.player.serializers import PlayerSerializer
+from api.table.serializers import TableSerializer
+#from .PreferenceScoreSerializer import PreferenceScoreSerializer
+#from .fields import ScoreObjectRelatedField
 
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
@@ -10,15 +15,48 @@ class UserSerializer(serializers.ModelSerializer):
         fields = ['id', 'username', 'email', 'password']
         write_only_fields = ('password',)
 
-class TableSerializer(serializers.ModelSerializer):
+####
+## complex serializers performing joins
+#####
+class TablePlayerSerializer(serializers.ModelSerializer):
+    player_set = PlayerSerializer(many=True, read_only=True)
+
     class Meta:
         model = Table
-        fields = '__all__'
+        fields = ['name', 'description', 'game', 'player_set']
 
-class PlayerSerializer(serializers.ModelSerializer):
-    #score_object = ScoreObjectRelatedField()
-    user = serializers.PrimaryKeyRelatedField(queryset=User.objects.all())
+class PlayerUserSerializer(serializers.ModelSerializer):
+    user = UserSerializer(read_only=True)
 
     class Meta:
         model = Player
-        fields = '__all__'
+        fields = ['id', 'table', 'number', 'user']
+
+class TablePlayerUserSerializer(serializers.ModelSerializer):
+    player_set = PlayerUserSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = Table
+        fields = fields = ['name', 'description', 'game', 'player_set']
+
+
+class UserPlayerSerializer(serializers.ModelSerializer):
+    player_set = PlayerSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'player_set']
+
+class PlayerTableSerializer(serializers.ModelSerializer):
+    table = TableSerializer(read_only=True)
+
+    class Meta:
+        model = Player
+        fields = ['id', 'table', 'number']
+
+class UserPlayerTableSerializer(serializers.ModelSerializer):
+    player_set = PlayerTableSerializer(many=True, read_only=True)
+    
+    class Meta:
+        model = User
+        fields = ['id', 'username', 'email', 'player_set']
