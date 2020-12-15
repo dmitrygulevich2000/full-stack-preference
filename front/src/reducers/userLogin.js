@@ -6,7 +6,7 @@ const initialState = {
 }
 
 
-export default function userLogin(state = initialState, action) {
+export default function setLocalLogin(state = initialState, action) {
     switch(action.type) {
       case USER_LOGGED:
         return {
