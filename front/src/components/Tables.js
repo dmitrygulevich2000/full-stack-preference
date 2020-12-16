@@ -1,6 +1,6 @@
 import {useSelector, useDispatch} from 'react-redux'
 import { useHistory } from 'react-router-dom'
-
+import {openModal} from '../actions/modal'
 import { MODAL_REGISTRATION, MODAL_SIGNIN, MODAL_CREATION } from '../constants/ModalNames';
 
 import Model from './Model'
@@ -37,6 +37,8 @@ const Tables = () => {
                     fontSize='10vh'>refresh</button>
                 <button className='basic_button' onClick={()=>history.push('/')}
                     fontSize='10vh'>На главную</button>
+                <button className='basic_button' onClick={() => {dispatch(openModal(MODAL_CREATION))}}
+                    fontSize='10vh'>Создать стол</button>
             </div>
             <div className='tables_list'>
             {
