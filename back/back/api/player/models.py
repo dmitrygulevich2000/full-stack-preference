@@ -18,7 +18,7 @@ class Player(models.Model):
     user = models.ForeignKey(User, on_delete=models.SET_NULL, blank=True, null=True) # if user deleted, player becomes unauthorized
 
     def save(self, *args, **kwargs):
-        print(self.__dict__)
+        #print(self.__dict__)
         if self.number is None:
             self.number = free_place(self.table_id)
         super().save(*args, **kwargs)

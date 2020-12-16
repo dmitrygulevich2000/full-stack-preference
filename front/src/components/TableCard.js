@@ -1,6 +1,8 @@
 import { useDispatch } from "react-redux"
 import { openExtraInfo, closeExtraInfo } from '../actions/tables'
 
+import {ConnectToTable} from './Creation'
+
 const TableCard = (props) => {
     const dispatch = useDispatch()
 
@@ -23,7 +25,7 @@ const TableCard = (props) => {
                 ? <button className="table_card__btnInf" onClick={() => dispatch(openExtraInfo(props.tableInfo.id))}>Open More</button>
                 : <button className="table_card__btnInf" onClick={() => dispatch(closeExtraInfo())}>Close More</button>
                 }
-                <button className="table_card__btnConnect">Come in</button>
+                <button className="table_card__btnConnect" onClick={()=>ConnectToTable(props.tableInfo.tableName)}>Come in</button>
             </div>
             {
                 props.isOpenExraInfo 

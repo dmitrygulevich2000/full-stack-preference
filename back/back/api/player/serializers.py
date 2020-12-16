@@ -18,9 +18,9 @@ class PlayerLimitSerializer(serializers.ModelSerializer):
 
     def validate(self, data):
         table_pk = data['table']
-        print(table_pk)
+        #print(table_pk)
         game = Table.objects.get(pk=table_pk).game
-        print(game)
+        #print(game)
         limit_reached = len(Player.objects.filter(table_id=table_pk))
         
         if limit_reached >= max_players[game]:

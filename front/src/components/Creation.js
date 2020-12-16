@@ -21,7 +21,7 @@ const CreateTable = async (name, game, description) => {
     )()
 }
 
-const ConnectToTable = async (name) => {
+export const ConnectToTable = async (name) => {
     return await ApiClient(
         "players/",
         {
@@ -54,7 +54,7 @@ const Creation = () => {
         dispatch(closeModal())
 
         history.push("/field")
-    }
+}
 
     return (
         <form className="form" name='register'>
