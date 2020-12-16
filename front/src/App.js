@@ -14,7 +14,7 @@ function App() {
   const userLogin = useSelector((state) => state.userLogin.userLogin)
 
   return (
-    <div>
+    <>
       <TopPanel LoggedUser={userLogin}/>
       <Router>
           <Switch>
@@ -35,7 +35,7 @@ function App() {
             </Route>
           </Switch>
       </Router>
-    </div>
+    </>
   );
 }
 

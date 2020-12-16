@@ -7,15 +7,15 @@ from api.serializers import UserSerializer, UserPlayerSerializer, UserPlayerTabl
 
 class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
-    #serializer_class = UserPlayerTableSerializer
 
-    # def get_permissions(self):
-    #     if self.action == 'list':
-    #         return [perm.IsAdminUser()]
-    #     elif self.action == 'create':
-    #         return [perm.AllowAny()]
-    #     else:
-    #         return [perm.IsAuthenticated()]
+    def get_permissions(self):
+        if self.action == 'list':
+            return [perm.IsAdminUser()]
+        elif self.action == 'create':
+            return [perm.AllowAny()]
+        else:
+            return [perm.IsAuthenticated()]
+
     def perform_create(self, serializer):
         User.objects.create_user(**serializer.validated_data)
 

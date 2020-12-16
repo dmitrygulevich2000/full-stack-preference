@@ -3,6 +3,8 @@ import { useDispatch } from "react-redux";
 import { useHistory } from "react-router-dom";
 import {logUser} from '../actions/userLogin'
 import {closeModal} from '../actions/modal'
+import {register} from '../actions/register'
+import { ENGINE_METHOD_ALL } from "constants";
 
 const Registration = () => {
     const [login, setLogin] = React.useState("");
@@ -10,28 +12,24 @@ const Registration = () => {
     const [password, setPassword] = React.useState("");
     const dispatch = useDispatch()
     const history = useHistory()
-    const handleSubmit = (dispatch) => {
+    
+    const handleSubmit = (event, dispatch) => {
         if (!login || !password || !mail) {
             return;
         }
-
-        /*
-            ! Authorisation !
-        */
-
-        dispatch(logUser(login))
+        console.log(login, password, mail)
+        dispatch(register(login, mail, password))
+        // dispatch(logUser(login))
         dispatch(closeModal())
-        history.push("/tables")
+        // history.push("/tables")
     }
 
-
-
     return (
-        <div className="form-wrapper">
+        <form className="form" name='register'>
             <h2 className="form-header">Join Us</h2>
             <div className="form-item">
                 <label className='form-item__label'>Your new login</label>
-                <input className='form-item__input'
+                <input className='form-item__input' name='username'
                     placeholder="chipollino"
                     type="text"
                     onChange={(event) => {
@@ -42,7 +40,7 @@ const Registration = () => {
             </div>
             <div className="form-item">
                 <label className='form-item__label'>e-mail</label>
-                <input className='form-item__input'
+                <input className='form-item__input' name='email'
                     placeholder="very_cool_boy@gmaol.com"
                     type="e-mail"
                     onChange={(event) => {
@@ -52,7 +50,7 @@ const Registration = () => {
             </div>
             <div className="form-item">
                 <label className='form-item__label'>Password</label>
-                <input className='form-item__input'
+                <input className='form-item__input' name='password'
                     placeholder="very_cool_boy" 
                     type="password"
                     onChange={(event) => {
@@ -61,11 +59,10 @@ const Registration = () => {
                 </input>
             </div>
 
-            <button className="form-btn"
-                onClick={() => handleSubmit(dispatch)}>
-                Check it out
-                </button>
-        </div>
+            <input className="form-btn" type='submit'
+                onClick={(event) => {event.preventDefault(); handleSubmit(event, dispatch)}}
+                value='Check it out'/>
+        </form>
     )
 }
 

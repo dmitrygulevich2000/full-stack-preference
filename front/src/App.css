@@ -11,6 +11,37 @@ html, body {
   overflow: hidden
 }
 
+.main__central_area {
+  font-size: max(20px, 8vh);
+  margin-left: auto;
+  margin-right: auto;
+  width: max(100px, 33vw);
+  height: max(60px, 80vh);
+  align-self: center;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+  .basic_button {
+    font-size: max(20px, 5vh);
+    margin-left: auto;
+    margin-right: auto;
+    width: 80%;
+    height: 12vh;
+    background-color: #07FCED;
+    border: max(2px, 0.5vh) solid #0F26FA;
+    border-radius: max(10px, 5vh);
+  }
+  button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.05em;
+  }
+  /* .form-btn:active {
+    background-color: #3e8e41;
+    box-shadow: 0 5px #666;
+    transform: translateY(4px);
+  } */
 
 #top_panel {
   /* self properties */
@@ -58,9 +89,16 @@ html, body {
           margin-left: 2%;
       }
 
-
+.model-background {
+position: fixed;
+left: 0;
+top: 0;
+width: 100vw;
+height: 100vh;
+background-color: rgba(0, 0, 0, 0.4);
+}
 .model {
-  position: fixed;
+  position: relative;
   display: flex;
   justify-content: space-around;
   align-items: space-around;

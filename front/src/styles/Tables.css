@@ -1,0 +1,9 @@
+.tables__left_area {
+    font-size: max(20px, 8vh);
+    width: max(100px, 50vw);
+    height: max(20px, 10vh);
+  
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}

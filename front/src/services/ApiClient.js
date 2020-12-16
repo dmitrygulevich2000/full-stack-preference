@@ -1,4 +1,4 @@
-const baseUrl = 'http://localhost:8000/api/'
+export const baseUrl = 'http://localhost:8000/api/'
 
 export const ApiClient = (url, init, with_refresh=true) => {
   const token = window.localStorage.getItem('access')
@@ -10,7 +10,7 @@ export const ApiClient = (url, init, with_refresh=true) => {
   }
   return async () => {
     const response = await fetch(`${baseUrl}${url}`, { ...init, headers })
-    if (response.status !==401 || !with_refresh) {
+    if (response.status !== 401 || !with_refresh) {
       return response
     }
     console.log("refresh<--->")
