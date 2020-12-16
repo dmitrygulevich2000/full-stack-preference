@@ -1,7 +1,5 @@
 env/
-
-db.sqlite3
-*.pyc
+.vscode/
 
 *.sqlite3
 __pycache__/

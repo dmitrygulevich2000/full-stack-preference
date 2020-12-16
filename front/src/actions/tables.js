@@ -17,9 +17,9 @@ export function updateTables() {
                         id: idx,
                         tableName: table["name"],
                         gameName: table.game,
-                        status: 'Closed', // пока нет в api
+                        status: 'Opened', // пока нет в api
                         players: table.player_set.map((pl)=>{
-                            return pl.user ? pl.user.username : "anonymous-player-"+ pl.id
+                            return pl.user ? pl.user.username : "anonymous-player#"+ pl.id
                         }),
                         extra: {
                             convention: table.description
