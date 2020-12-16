@@ -1,6 +1,10 @@
 import uuid
 from django.db import models
 
+max_players = {
+    'pref': 4
+}
+
 class Table(models.Model):
     GAME_TYPES = [
         ('pref', 'Preference')
