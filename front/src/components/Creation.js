@@ -16,8 +16,7 @@ const CreateTable = async (name, game, description) => {
                 "Content-Type": "Application/json",
             },
             body: JSON.stringify({name, game, description})
-        },
-        false
+        }
     )()
 }
 
@@ -30,8 +29,7 @@ export const ConnectToTable = async (name) => {
                 "Content-Type": "Application/json",
             },
             body: JSON.stringify({table : name})
-        },
-        false
+        }
     )()
 }
 
@@ -42,14 +40,14 @@ const Creation = () => {
     // const [game, setGame] = React.useState("");
     const dispatch = useDispatch()
     const history = useHistory()
-    const handleSubmit = (event, dispatch) => {
+    const handleSubmit = async (event, dispatch) => {
         if (!name || !description) {
             return;
         }
         const game = 'pref'
         console.log(description, name, game)
-        CreateTable(name, game, description)
-        ConnectToTable(name)
+        await CreateTable(name, game, description)
+        await ConnectToTable(name)
 
         dispatch(closeModal())
 

@@ -18,5 +18,5 @@ class PlayerViewSet(viewsets.ModelViewSet):
             return PlayerUserSerializer
     
     def perform_create(self, serializer):
-        #print(self.request.user) 
+        #print(self.request.user)
         serializer.save(user=self.request.user)
